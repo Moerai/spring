@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dt/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.UserMapper">
+
+	<insert id="create">
+	insert into tbl_user(userID, name, gender, city) values(#{userID}, #{name}, #{gender}, #{city})
+	</insert>
+	
+	<select id="read" resultType="org.zerock.domain.UserVO">
+	select userID, name, gender, city from tbl_user 
+	where userID = #{userID}
+	</select>
+	
+	<update id="update">
+	update tbl_user set name = #{name}, gender=#{gender}, city=#{city}
+	where userID = #{userID}
+	</update>
+	
+	<delete id="delete">
+	delete from tbl_user where userID = #{userID}
+	</delete>
+	
+	<select id="listAll" resultType="org.zerock.domain.UserVO">
+	select userID, name, gender, city from tbl_user where userID > 0 order by userID desc
+	</select>
+	
+</mapper>
